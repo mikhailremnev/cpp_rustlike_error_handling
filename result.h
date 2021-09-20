@@ -3,50 +3,7 @@
 #include <iostream>
 
 /**
- *
- * Usage example:
- *
- * ```
- *
- * // RESULT_NODISCARD means that GCC will show warnings for unchecked
- * // errors in Result ('warning: ignoring return value of...').
- *
- * Result<int, std::string> sqrtResult(int x) RESULT_NODISCARD;
- * Result<int, std::string> sqrtLoop(int x) RESULT_NODISCARD;
- *
- * Result<int, std::string> sqrtResult(int x)
- * {
- *   if (x < 0) return ERROR("Error: x is negative");
- *   std::cout << "x = " << sqrt(x) << std::endl;
- *   return x;
- * }
- *
- * Result<int, std::string> sqrtLoop(int x)
- * {
- *   int y = TRY(sqrtResult(x));
- *
- *   // Won't reach this part of the code if x is negative
- *
- *   for (int i = 0; i < y; i++) {
- *     printf("%d\n", i);
- *   }
- *
- *   return y;
- * }
- *
- * int main()
- * {
- *   // GCC will print warning here, because
- *   // possible error is ignored.
- *   sqrtLoop(16);
- *
- *   Result<int, std::string> result = sqrtLoop(-16);
- *
- *   return result.isOk() ? 0 : 1;
- * }
- *
- * ```
- *
+ * Rust-like error handling. See test.cc for usage examples.
  */
 
 /**********************************************/
